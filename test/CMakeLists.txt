@@ -7,6 +7,8 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
+find_package(Threads REQUIRED)
+
 include_directories(${gtest_SOURCE_DIR}/include)
 message(PROJECT_SOURCE_DIR="${gtest_SOURCE_DIR}/include")
 include_directories(${${PROJECT_NAME}_SOURCE_DIR}/include)
@@ -20,6 +22,7 @@ target_link_libraries(${PROJECT_NAME}.test
     ${PROJECT_NAME}
     gtest
     gmock
+    Threads::Threads
 )
 
 install(TARGETS ${PROJECT_NAME}.test
